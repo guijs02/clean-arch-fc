@@ -25,7 +25,7 @@ describe("Unit test for listing product use case", () => {
 
     const output = await useCase.execute({});
 
-    expect(output.products.length).toBe(1);
+    expect(output.products.length).toBe(2);
     expect(output.products[0].id).toBe(product1.id);
     expect(output.products[0].name).toBe(product1.name);
     expect(output.products[0].price).toBe(product1.price);
