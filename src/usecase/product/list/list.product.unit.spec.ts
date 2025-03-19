@@ -1,8 +1,5 @@
-import CustomerFactory from "../../../domain/customer/factory/customer.factory";
-import Address from "../../../domain/customer/value-object/address";
 import ProductFactory from "../../../domain/product/factory/product.factory";
 import ListProductUseCase from "./list.product.usecase";
-import ListCustomerUseCase from "./list.product.usecase";
 
 
 const product1 = ProductFactory.create("a", "prod a", 123);
