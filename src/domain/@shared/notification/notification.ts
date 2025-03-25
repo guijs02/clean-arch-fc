@@ -10,6 +10,9 @@ export default class Notification {
     this.errors.push(error);
   }
 
+  addErrors(errors: NotificationErrorProps[]) {
+    this.errors.push(...errors);
+  }
   hasErrors(): boolean {
     return this.errors.length > 0;
   }

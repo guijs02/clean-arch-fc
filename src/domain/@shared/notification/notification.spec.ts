@@ -40,10 +40,8 @@ describe("Unit testss for notifications", () => {
       context: "product",
     };
     notification.addError(prodError);
-    
-    expect(notification.messages("product")).toBe(
-      "product: error message,"
-    );
+
+    expect(notification.messages("product")).toBe("product: error message,");
 
     const prodError2 = {
       message: "error message2",
@@ -64,10 +62,27 @@ describe("Unit testss for notifications", () => {
     notification.addError(prodError3);
 
     expect(notification.messages()).toBe(
-      "customer: error message,customer: error message2,order: error message3,"+
-      "product: error message,product: error message2,price: error message3,"
+      "customer: error message,customer: error message2,order: error message3," +
+        "product: error message,product: error message2,price: error message3,"
     );
+  });
+  it("should to accumulate one or more errors at the same time", () => {
+    const notification = new Notification();
+    const prodError2 = {
+      message: "error message",
+      context: "product",
+    };
 
+    const prodError3 = {
+      message: "error message2",
+      context: "product",
+    };
+
+    notification.addErrors([prodError2, prodError3]);
+    
+    expect(notification.messages("product")).toBe(
+      "product: error message,product: error message2,"
+    );
     
   });
 
@@ -92,6 +107,4 @@ describe("Unit testss for notifications", () => {
 
     expect(notification.getErrors()).toEqual([error]);
   });
-
-
 });
